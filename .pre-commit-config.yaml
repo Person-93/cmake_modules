@@ -1,0 +1,25 @@
+default_stages: [ commit ]
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.0.1
+    hooks:
+      - id: check-added-large-files
+      - id: check-case-conflict
+      - id: check-executables-have-shebangs
+      - id: check-json
+      - id: check-merge-conflict
+      - id: check-shebang-scripts-are-executable
+      - id: check-toml
+      - id: check-vcs-permalinks
+      - id: check-xml
+      - id: check-yaml
+      - id: end-of-file-fixer
+      - id: trailing-whitespace
+  - repo: https://github.com/jumanjihouse/pre-commit-hooks
+    rev: 2.1.5
+    hooks:
+      - id: check-mailmap
+      - id: forbid-binary
+      - id: script-must-have-extension
+      - id: script-must-not-have-extension
+      - id: shellcheck
