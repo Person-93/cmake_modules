@@ -173,7 +173,9 @@ _help_lint: Options affecting the linter
 lint:
   _help_disabled_codes:
     - a list of lint codes to disable
-  disabled_codes: [ ]
+  disabled_codes:
+    - C0111 # Missing docstring - use rst comments instead
+    - C0307 # Bad indentation - use the formatter to handle this
   _help_function_pattern:
     - regular expression pattern describing valid function names
   function_pattern: '[0-9a-z_]+'
