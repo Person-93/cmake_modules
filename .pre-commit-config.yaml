@@ -28,8 +28,8 @@ repos:
     hooks:
       - id: commitlint
         stages: [ commit-msg ]
-  - repo: https://github.com/cheshirekow/cmake-format-precommit
-    rev: v0.6.13
+  - repo: https://github.com/Person-93/cmake-format-precommit
+    rev: v0.6.15
     hooks:
       - id: cmake-format
       - id: cmake-lint
