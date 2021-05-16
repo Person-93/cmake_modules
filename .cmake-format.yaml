@@ -176,6 +176,9 @@ lint:
   disabled_codes:
     - C0111 # Missing docstring - use rst comments instead
     - C0307 # Bad indentation - use the formatter to handle this
+    - C0301 # Line too long - Formatter generally handles this, Only thing it misses is
+            #                 comments.
+            #               - there's no way to make this rule ignore URLs
   _help_function_pattern:
     - regular expression pattern describing valid function names
   function_pattern: '[0-9a-z_]+'
