@@ -4,6 +4,11 @@ if (DEFINED CMAKE_TOOLCHAIN_FILE)
 endif ()
 list (APPEND CMAKE_MODULE_PATH ${CMAKE_CURRENT_LIST_DIR}/modules)
 
+get_directory_property (has_parent PARENT_DIRECTORY)
+if (has_parent)
+    set (CMAKE_MODULE_PATH "${CMAKE_MODULE_PATH}" PARENT_SCOPE)
+endif ()
+
 include (ParseIni)
 parse_ini (info.ini info)
 
