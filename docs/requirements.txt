@@ -1,0 +1,4 @@
+sphinx==4.0.1
+sphinx-rtd-theme==0.5.2
+readthedocs-sphinx-search==0.1.0
+sphinxcontrib-moderncmakedomain==3.19
