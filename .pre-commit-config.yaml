@@ -29,7 +29,7 @@ repos:
       - id: commitlint
         stages: [ commit-msg ]
   - repo: https://github.com/Person-93/cmake-format-precommit
-    rev: v0.6.15
+    rev: v0.1.0
     hooks:
       - id: cmake-format
       - id: cmake-lint
