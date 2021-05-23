@@ -1,0 +1,18 @@
+set (SPHINX_SOURCE ${CMAKE_CURRENT_SOURCE_DIR})
+set (SPHINX_BUILD ${CMAKE_CURRENT_BINARY_DIR})
+set (SPHINX_CONFIG ${CMAKE_CURRENT_SOURCE_DIR})
+set (CONF_PY ${SPHINX_CONFIG}/conf.py)
+
+file (GLOB MODULE_FILES "../modules/*.cmake")
+
+sphinx_add_docs (
+    docs
+    SOURCE
+    ${SPHINX_SOURCE}
+    BUILD
+    ${SPHINX_BUILD}
+    CONFIG
+    ${SPHINX_CONFIG}
+    DEPENDS
+    ${CONF_PY};${MODULE_FILES}
+    )
