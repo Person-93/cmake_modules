@@ -6,6 +6,10 @@ Person93's CMake Modules
   :target: https://person93s-cmake-modules.readthedocs.io/en/latest/?badge=latest
   :alt: Documentation Status
 
+.. image:: https://github.com/Person-93/cmake_modules/actions/workflows/commitlint.yml/badge.svg
+  :target: https://github.com/Person-93/cmake_modules/actions/workflows/commitlint.yml
+  :alt: Commitlint Status
+
 This repository contains some cmake modules that I found useful. You can see the full
 listing on `read-the-docs <https://person93s-cmake-modules.readthedocs.io>`_.
 
