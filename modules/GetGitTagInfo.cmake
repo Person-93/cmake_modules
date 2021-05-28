@@ -119,7 +119,7 @@ function (set_semver_vars)
     cmake_parse_arguments (args "${options}" "${single_value}" "${multi_value}" ${ARGN})
 
     if (NOT args_OUTPUT)
-        message (FATAL_ERROR "set_semver_args needs OUTPUT_PREFIX argument")
+        message (FATAL_ERROR "set_semver_args needs OUTPUT argument")
     endif ()
 
     if (args_UNPARSED_ARGUMNENTS)
