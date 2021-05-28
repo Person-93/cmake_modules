@@ -162,8 +162,8 @@ function (set_semver_vars)
     set (patch "${CMAKE_MATCH_4}")
     set (prerelease "${CMAKE_MATCH_6}")
     set (full "${major}.${minor}.${patch}")
-    if (tweak)
-        string (APPEND full "-${tweak}")
+    if (prerelease)
+        string (APPEND full "-${prerelease}")
     endif ()
 
     # cmake-lint: disable=C0103
