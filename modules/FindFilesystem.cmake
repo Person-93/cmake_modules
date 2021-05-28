@@ -55,7 +55,6 @@ cmake_push_check_state ()
 
 set (CMAKE_CXX_STANDARD 17)
 unset (have_header)
-unset (can_link)
 
 check_include_file_cxx (filesystem have_header)
 
@@ -74,23 +73,32 @@ if (have_header)
         ]]
         )
 
-    _filesystem_check_cxx_source ("${CODE}" can_link)
+    set (_was_found FALSE)
+    _filesystem_check_cxx_source ("${CODE}" CXX_FILESYSTEM_NO_LINK_NEEDED)
     unset (FS_LIBS)
+    if (CXX_FILESYSTEM_NO_LINK_NEEDED)
+        set (_was_found TRUE)
+    endif ()
 
-    if (NOT can_link)
+    if (NOT _was_found)
         set (PREV_LIBRARIES ${CMAKE_REQUIRED_LIBRARIES})
         set (FS_LIBS "-lstdc++fs")
         set (CMAKE_REQUIRED_LIBRARIES ${PREV_LIBRARIES} ${FS_LIBS})
-        _filesystem_check_cxx_source ("${CODE}" can_link)
+        _filesystem_check_cxx_source ("${CODE}" CXX_FILESYSTEM_STDC_NEEDED)
 
-        if (NOT can_link)
+        if (CXX_FILESYSTEM_STDC_NEEDED)
+            set (_was_found TRUE)
+        else ()
             set (FS_LIBS "-lc++fs")
             set (CMAKE_REQUIRED_LIBRARIES ${PREV_LIBRARIES} ${FS_LIBS})
             _filesystem_check_cxx_source ("${CODE}" CXX_FILESYSTEM_CPPFS_NEEDED)
+            if (CXX_FILESYSTEM_CPPFS_NEEDED)
+                set (_was_found TRUE)
+            endif ()
         endif ()
     endif ()
 
-    if (can_link)
+    if (_was_found)
         add_library (std::filesystem INTERFACE IMPORTED)
         set_property (
             TARGET std::filesystem APPEND PROPERTY INTERFACE_COMPILE_FEATURES
@@ -104,6 +112,4 @@ endif ()
 
 cmake_pop_check_state ()
 
-if (Filesystem_FIND_REQUIRED AND NOT can_link)
-    message (FATAL_ERROR "Cannot run simple program using std::filesystem")
-endif ()
+find_package_handle_standard_args (Filesystem REQUIRED_VARS _was_found)
